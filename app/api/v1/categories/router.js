@@ -1,10 +1,10 @@
  const 
     express = require('express'),
     router = express(),
-    {create} = require('./controller');
+    {create, find, index, update} = require('./controller');
 
 
- // Untuk testing Endpoint success or not di postman
+ // For testing Endpoint success or not in postman
  
  router.get('/testQuery', (req,res) => {
     const data = [
@@ -26,7 +26,7 @@
       
  });
  
- router.get('/categories', (req,res) => {
+ router.get('/testRouter', (req,res) => {
     res.status(200).json({
         message: 'Halaman Categories'
     })
@@ -34,6 +34,9 @@
  
  //end
 
+ router.get('/categories', index);
+ router.get('/categories/:id', find);
+ router.put('/categories/:id', update);
  router.post('/categories', create);
 
  module.exports = router;
