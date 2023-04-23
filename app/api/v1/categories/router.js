@@ -1,5 +1,7 @@
- const express = require('express');
- const router = express();
+ const 
+    express = require('express'),
+    router = express(),
+    {create} = require('./controller');
 
 
  // Untuk testing Endpoint success or not di postman
@@ -31,5 +33,7 @@
  });
  
  //end
+
+ router.post('/categories', create);
 
  module.exports = router;
