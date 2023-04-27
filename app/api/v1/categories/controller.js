@@ -1,11 +1,10 @@
-const 
+const
+    {getAllCategories, createCategories} = require('../../../services/mongooes/categories'),
     Categories = require('./model'),
     create = async (req, res, next) => {
          try {
-            const
-                {name} = req.body,
-                result = await Categories.create({name});
-
+            const result = await createCategories(req);
+            
             res.status(201).json({
                 data: result
             });
@@ -15,7 +14,7 @@ const
     },
     index = async (req, res, next) => {
         try {
-            const result = await Categories.find().select('_id name');
+            const result = await getAllCategories(res);
             res.status(200).json({
                 data: result
             });
